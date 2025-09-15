@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>മലപ്പട്ടം ശ്രീ പുള്ളിവേട്ടക്കൊരുമകൻ ക്ഷേത്രം </title>
+  <style>
+    :root{--accent:#b75b2a;--bg:#fbf8f6;--card:#fff;--muted:#666}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, Arial, Helvetica, sans-serif;background:var(--bg);color:#222}
+    header{background:linear-gradient(90deg,#3a2b20,#24180f);color:#fff;padding:20px 6%;display:flex;align-items:center}
+    .brand{font-weight:800;font-size:1.4rem}
+    nav{margin-left:auto}
+    nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600}
+
+    .hero{background:url('https://source.unsplash.com/1600x700/?temple,india') center/cover no-repeat;height:420px;display:flex;align-items:center}
+    .hero .inner{background:linear-gradient(0deg,rgba(0,0,0,0.45),rgba(0,0,0,0.05));padding:28px;color:#fff;margin-left:6%;border-radius:10px}
+    .hero h1{margin:0;font-size:2.2rem}
+    .hero p{margin:8px 0 0}
+
+    .container{max-width:1100px;margin:-40px auto 60px;padding:0 20px}
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:22px}
+    @media(max-width:980px){.grid{grid-template-columns:1fr;margin-top:12px}.hero{height:320px}}
+
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+    h2{color:var(--accent);margin-top:0}
+    p.note{color:var(--muted);margin-top:0}
+
+    /* sections */
+    .about{display:flex;gap:18px;align-items:center}
+    .about img{width:220px;height:140px;object-fit:cover;border-radius:10px}
+
+    .offer-list{display:grid;gap:12px}
+    .offer{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;border:1px solid #f0e0d6}
+
+    .btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700}
+    .btn.ghost{background:transparent;border:1px solid #d6c2b3;color:var(--accent)}
+
+    form .field{margin-bottom:12px}
+    label{display:block;font-weight:700;margin-bottom:6px}
+    input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd}
+    textarea{min-height:120px}
+
+    footer{padding:28px 6%;text-align:center;color:#666}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);visibility:hidden;opacity:0;transition:.15s}
+    .modal.show{visibility:visible;opacity:1}
+    .modal .box{background:#fff;padding:18px;border-radius:10px;max-width:560px;width:94%}
+
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">മലപ്പട്ടം ശ്രീ പുള്ളിവേട്ടക്കൊരുമകൻ ക്ഷേത്രം </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#offerings">Offerings</a>
+      <a href="#booking">Booking</a>
+      <a href="#contact">Contact</a>
+      <a href="Admin">Admin</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="inner">
+      <h1>മലപ്പട്ടം ശ്രീ പുള്ളിവേട്ടക്കൊരുമകൻ ക്ഷേത്രം </h1>
+      <p>malappttam.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <div class="card about" id="about">
+          <div>
+            <h2>About the Temple</h2>
+            <p class="note">മലപ്പട്ടം ശ്രീ പുള്ളിവേട്ടക്കൊരുമകൻ ക്ഷേത്രം .</p>
+            <p class="note">Timings: 6:00 AM - 12:30 PM, 4:00 PM - 8:00 PM</p>
+          </div>
+          <img src="https://source.unsplash.com/400x300/?temple,prayer" alt="temple">
+        </div>
+
+        <div class="card" id="offerings" style="margin-top:18px">
+          <h2>Offerings & Vazhipadu</h2>
+          <p class="note">മലപ്പട്ടം ശ്രീ പുള്ളിവേട്ടക്കൊരുമകൻ ക്ഷേത്രം </p>
+          <div class="offer-list" id="offerList"></div>
+        </div>
+
+        <div class="card" id="booking" style="margin-top:18px">
+          <h2>Advance Booking</h2>
+          <p class="note">.</p>
+
+          <div id="bookingArea">
+            <div class="field">
+              <label>Selected Offering</label>
+              <div id="selectedOffering">None</div>
+            </div>
+            <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div class="field"><label for="bdate">Date</label><input id="bdate" type="date"/></div>
+              <div class="field"><label for="bslot">Time Slot</label><select id="bslot"><option>Morning (8:00)</option><option>Noon (12:00)</option><option>Evening (6:00)</option></select></div>
+            </div>
+            <div class="field"><label for="bqty">Quantity</label><input id="bqty" type="number" min="1" value="1"/></div>
+            <hr/>
+            <div class="field"><label for="bname">Donor Name</label><input id="bname" type="text"/></div>
+            <div class="field"><label for="bphone">Phone</label><input id="bphone" type="tel"/></div>
+            <div class="field"><label for="bemail">Email (optional)</label><input id="bemail" type="email"/></div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+              <button class="btn ghost" id="breset">Reset</button>
+              <button class="btn" id="bconfirm">Confirm Booking</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="inquiry" style="margin-top:18px">
+          <h2>Information / Inquiry</h2>
+          <p class="note">Send us an inquiry and our team will respond.</p>
+          <div class="field"><label for="iqname">Name</label><input id="iqname" type="text"/></div>
+          <div class="field"><label for="iqphone">Phone</label><input id="iqphone" type="tel"/></div>
+          <div class="field"><label for="iqemail">Email</label><input id="iqemail" type="email"/></div>
+          <div class="field"><label for="iqtopic">Topic</label><select id="iqtopic"><option>General</option><option>Events</option><option>Seva</option><option>Volunteer</option></select></div>
+          <div class="field"><label for="iqmsg">Message</label><textarea id="iqmsg"></textarea></div>
+          <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" id="iqsend">Submit Inquiry</button></div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h2>Temple Info</h2>
+          <p class="note"><strong>Address:</strong>Malppattam sreepullivattakorumakn shethram</p>
+          <p class="note"><strong>Contact:</strong> +7012149262</p>
+          <p class="note"><strong>Email:</strong>templemalappattam@gmail.com</p>
+          <div style="margin-top:12px"><a class="btn ghost" href="#contact">Get Directions</a></div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <h2>Gallery</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <img src="https://source.unsplash.com/200x150/?puja" style="width:100%;height:80px;object-fit:cover;border-radius:8px">
+            <img src="https://source.unsplash.com/200x150/?festival" style="width:100%;height:80px;object-fit:cover;border-radius:8px">
+            <img src="https://source.unsplash.com/200x150/?prasad" style="width:100%;height:80px;object-fit:cover;border-radius:8px">
+            <img src="https://source.unsplash.com/200x150/?lamp" style="width:100%;height:80px;object-fit:cover;border-radius:8px">
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <h2>Admin</h2>
+          <p class="note">Admin: <code></code></p>
+          <div class="field"><label>Admin Password</label><input id="adminPass" type="password"/></div>
+          <div style="display:flex;gap:8px"><button class="btn" id="openAdmin">Open Dashboard</button><button class="btn ghost" id="exportAll">Export</button></div>
+          <div id="adminPanel" style="display:none;margin-top:12px"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span>മലപ്പട്ടം ശ്രീ പുള്ളിവേട്ടക്കൊരുമകൻ ക്ഷേത്രം  — All Rights Reserved
+  </footer>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="box"><h3 id="modalTitle">Done</h3><div id="modalBody"></div><div style="text-align:right;margin-top:12px"><button class="btn ghost" id="modalClose">Close</button></div></div>
+  </div>
+
+  <script>
+    // Demo data
+    const offers = [
+      {id:'o1',name:'കളിയാട്ടം',price:300,desc:'കളിയാട്ടം'},
+      {id:'o2',name:'നേർച്ച തെയ്യം',price:150,desc:'നേർച്ച തെയ്യം'},
+      {id:'o3',name:'ആൾ രൂപങ്ങൾ',price:800,desc:'ആൾ രൂപങ്ങൾ'},
+      {id:'o4',name:'പട്ട് ',price:2000,desc:'പട്ട് '}
+    ];
+
+    const $ = id => document.getElementById(id);
+    const formatINR = n => '₹' + Number(n).toLocaleString('en-IN');
+
+    // Render offer list
+    const offerList = $('offerList');
+    offers.forEach(o=>{
+      const div = document.createElement('div'); div.className='offer';
+      div.innerHTML = `<div><strong>${o.name}</strong><div class="note">${o.desc}</div></div><div style="text-align:right"><div style="font-weight:800;color:var(--accent)">${formatINR(o.price)}</div><div style="margin-top:8px"><button class="btn" data-id="${o.id}">Select</button></div></div>`;
+      offerList.appendChild(div);
+    });
+
+    // Booking selection
+    let selected = null;
+    offerList.addEventListener('click',e=>{
+      const btn = e.target.closest('button'); if(!btn) return;
+      const id = btn.dataset.id; selected = offers.find(x=>x.id===id);
+      $('selectedOffering').textContent = `${selected.name} — ${formatINR(selected.price)}`;
+    });
+
+    // Date min today
+    const today = new Date(); const yyyy = today.getFullYear(); const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); const minDate = `${yyyy}-${mm}-${dd}`; $('bdate').setAttribute('min', minDate);
+
+    // Save booking to localStorage
+    const saveBookings = b=>{
+      const all = JSON.parse(localStorage.getItem('temple_bookings')||'[]'); all.push(b); localStorage.setItem('temple_bookings', JSON.stringify(all));
+    }
+
+    $('bconfirm').addEventListener('click',()=>{
+      if(!selected){alert('Please select an offering');return}
+      const date = $('bdate').value; const slot = $('bslot').value; const qty = Number($('bqty').value||1);
+      const name = $('bname').value.trim(); const phone = $('bphone').value.trim(); const email = $('bemail').value.trim();
+      if(!date || !name || !phone){alert('Please fill required fields');return}
+      if(!/^[0-9]{6,15}$/.test(phone)){alert('Enter valid phone digits');return}
+      const id = 'BK'+Date.now(); const total = selected.price*qty;
+      const booking = {id,offering:selected.name,offeringId:selected.id,price:selected.price,qty,total,date,slot,name,phone,email,created:new Date().toISOString()};
+      saveBookings(booking);
+      showModal('Booking Confirmed', `ID: ${id}<br>Offering: ${selected.name}<br>Date: ${date} (${slot})<br>Amount: ${formatINR(total)}<br>Please keep this ID for reference.`);
+      // reset
+      selected = null; $('selectedOffering').textContent='None'; $('bdate').value=''; $('bqty').value=1; $('bname').value=''; $('bphone').value=''; $('bemail').value='';
+    });
+
+    $('breset').addEventListener('click',()=>{selected=null;$('selectedOffering').textContent='None';$('bdate').value='';$('bqty').value=1;$('bname').value='';$('bphone').value='';$('bemail').value='';});
+
+    // Inquiry save
+    const saveInquiries = i=>{const all = JSON.parse(localStorage.getItem('temple_inquiries')||'[]'); all.push(i); localStorage.setItem('temple_inquiries', JSON.stringify(all));}
+    $('iqsend').addEventListener('click',()=>{
+      const name = $('iqname').value.trim(); const phone = $('iqphone').value.trim(); const email = $('iqemail').value.trim(); const topic = $('iqtopic').value; const msg = $('iqmsg').value.trim();
+      if(!name || !phone || !msg){alert('Please fill name, phone and message');return}
+      saveInquiries({id:'IQ'+Date.now(),name,phone,email,topic,message:msg,created:new Date().toISOString()});
+      showModal('Inquiry Submitted','Thank you. We will contact you soon.');
+      $('iqname').value='';$('iqphone').value='';$('iqemail').value='';$('iqmsg').value='';
+    });
+
+    // Admin
+    $('openAdmin').addEventListener('click',()=>{
+      const pass = $('adminPass').value; if(pass!=='itctrl@2025'){alert('Invalid admin password');return}
+      const bookings = JSON.parse(localStorage.getItem('temple_bookings')||'[]'); const inquiries = JSON.parse(localStorage.getItem('temple_inquiries')||'[]');
+      let html = '<h3>Bookings</h3>';
+      if(bookings.length===0) html += '<p class="note">No bookings.</p>'; else {html += '<table><thead><tr><th>ID</th><th>Offering</th><th>Date</th><th>Name</th><th>Phone</th><th>Amount</th></tr></thead><tbody>'; bookings.slice().reverse().forEach(b=>{html+=`<tr><td>${b.id}</td><td>${b.offering} x${b.qty}</td><td>${b.date}<br><small>${b.slot}</small></td><td>${b.name}</td><td>${b.phone}</td><td>${formatINR(b.total)}</td></tr>`}); html += '</tbody></table>'; }
+      html += '<h3 style="margin-top:12px">Inquiries</h3>';
+      if(inquiries.length===0) html += '<p class="note">No inquiries.</p>'; else {html += '<table><thead><tr><th>ID</th><th>Name</th><th>Phone</th><th>Topic</th><th>Message</th></tr></thead><tbody>'; inquiries.slice().reverse().forEach(i=>{html+=`<tr><td>${i.id}</td><td>${i.name}</td><td>${i.phone}</td><td>${i.topic}</td><td>${i.message}</td></tr>`}); html += '</tbody></table>'; }
+      html += '<div style="margin-top:8px;display:flex;gap:8px"><button class="btn" id="adminExport">Export CSV</button><button class="btn ghost" id="adminClear">Clear All (demo)</button></div>';
+      $('adminPanel').style.display='block'; $('adminPanel').innerHTML = html;
+      // attach admin export/clear
+      setTimeout(()=>{const ae = document.getElementById('adminExport'); if(ae) ae.addEventListener('click',()=>{exportAll();}); const ac = document.getElementById('adminClear'); if(ac) ac.addEventListener('click',()=>{if(!confirm('Clear all bookings and inquiries from this browser?')) return; localStorage.removeItem('temple_bookings'); localStorage.removeItem('temple_inquiries'); alert('Cleared');$('adminPanel').innerHTML='';})},100);
+    });
+
+    // Export combined CSV
+    function exportAll(){
+      const b = JSON.parse(localStorage.getItem('temple_bookings')||'[]'); const i = JSON.parse(localStorage.getItem('temple_inquiries')||'[]');
+      const rows = [['Type','ID','Offering/Topic','Qty','Date/Created','Slot/Name','Phone','Email','Message','Amount']];
+      b.forEach(x=>rows.push(['Booking',x.id,x.offering,x.qty,x.date,x.name,x.phone,x.email,'',x.total]));
+      i.forEach(x=>rows.push(['Inquiry',x.id,x.topic,'',x.created,x.name,x.phone,x.email,x.message,'']));
+      const csv = rows.map(r=>r.map(c=>`"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv],{type:'text/csv'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='temple_data.csv'; a.click(); URL.revokeObjectURL(url);
+    }
+
+    // Modal utility
+    function showModal(title,html){$('modalTitle').textContent=title;$('modalBody').innerHTML=html;$('modal').classList.add('show');}
+    $('modalClose').addEventListener('click',()=>{$('modal').classList.remove('show')});
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
